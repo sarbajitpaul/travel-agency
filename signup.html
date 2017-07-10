@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Sign Up</title>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="css/materialize.css"  media="screen,projection"/>
+  </head>
+
+  <body class="teal">
+
+    <div class="row section">
+      <form class="col s6 offset-s3">
+        <div class="card hoverable">
+          <div class="card-content">
+
+            <div class="row">
+                <div class="input-field col s4">
+                  <i class="material-icons prefix">supervisor_account</i>
+                  <input id="first-name-id" type="text">
+                  <label for="first-name-id">First Name</label>
+                </div>
+
+                <div class="input-field col s4">
+                  <input id="middle-name-id" type="text">
+                  <label for="middle-name-id">Middle Name</label>
+                </div>
+
+                <div class="input-field col s4">
+                  <input id="last-name-id" type="text">
+                  <label for="last-name-id">Last Name</label>
+                </div>
+            </div>
+
+            <div class="row">
+              <div class="input-field col s12">
+                <i class="material-icons prefix">phone</i>
+                <input id="mobile-number-id" type="text">
+                <label for="mobile-number-id">Mobile Number</label>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="input-field col s12">
+                <i class="material-icons prefix">email</i>
+                <input id="email-id" type="text">
+                <label for="email-id">Email</label>
+              </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s6">
+                  <i class="material-icons prefix">lock</i>
+                  <input id="password-id" type="password">
+                  <label for="password-id">Password</label>
+                </div>
+
+                <div class="input-field col s6">
+                  <input id="retype-password-id" type="password">
+                  <label for="retype-password-id">Retype Password</label>
+                </div>
+            </div>
+
+            <p>
+              <input type="checkbox" class="filled-in" id="filled-in-box"/>
+              <label for="filled-in-box">I don't want to specify any payment options</label>
+            </p>
+
+            <select disabled>
+              <ul class="collapsible">
+                <li>
+                  <div class="collapsible-header">Debit/Credit Card</div>
+                  <div class="collapsible-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+                </li>
+
+                <li>
+                  <div class="collapsible-header">Net Banking</div>
+                  <div class="collapsible-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+                </li>
+
+                <li>
+                  <div class="collapsible-header">Mobile Wallets</div>
+                  <div class="collapsible-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+                </li>
+
+              </ul>
+            </select>
+
+          </div>
+
+          <div class="card-action">
+            <a href="" class="btn waves-effect waves-light">Sign Up</a>
+          </div>
+        </div>
+
+
+      </form>
+    </div>
+
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="js/materialize.js"></script>
+
+    <script>
+    $(document).ready(function() {
+  $('select').material_select();
+});
+    </script>
+  </body>
+</html>
