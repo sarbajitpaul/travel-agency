@@ -1,0 +1,23 @@
+.badge{
+  display: none;
+}
+
+body{
+  background-image: url("../images/mountain-background.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+nav{
+  box-shadow: none;
+}
+
+.brand-logo{
+  font-family: 'Kaushan Script', cursive;
+  color: white;
+}
+
+.error-color{
+  color: red;
+  font-size: 12px;
+}

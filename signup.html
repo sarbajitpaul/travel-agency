@@ -5,49 +5,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Sign Up</title>
 
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="fonts/iconfont/material-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="css/materialize.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="css/signup.css"/>
   </head>
 
-  <body class="teal">
+  <body>
+
+    <!-- Nav bar -->
+    <div class="row center">
+      <div class="col l12">
+        <h3><a href="index.html" class="brand-logo center">Traverse</a></h3>
+      </div>
+    </div>
+
+    <!-- Main form -->
     <div class="row section">
-      <form class="col l6 offset-l3">
+      <form class="col l6 offset-l3" name="signup_form" onsubmit="return validator()">
         <div class="card hoverable">
           <div class="card-content">
             <!-- First, middle and last name -->
             <div class="row">
                 <div class="input-field col l4">
                   <i class="material-icons prefix">supervisor_account</i>
-                  <input id="first-name-id" type="text">
-                  <label for="first-name-id">First Name</label>
+                  <input id="first-name-id" type="text" name="f_name">
+                  <label for="first-name-id">First Name<span id="fname-error" class="error-color"></span></label>
                 </div>
 
                 <div class="input-field col l4">
-                  <input id="middle-name-id" type="text">
-                  <label for="middle-name-id">Middle Name</label>
+                  <input id="middle-name-id" type="text" name="m_name">
+                  <label for="middle-name-id">Middle Name<span id="mname-error" class="error-color"></span></label>
                 </div>
 
                 <div class="input-field col l4">
-                  <input id="last-name-id" type="text">
-                  <label for="last-name-id">Last Name</label>
+                  <input id="last-name-id" type="text" name="l_name">
+                  <label for="last-name-id">Last Name<span id="lname-error" class="error-color"></span></label>
                 </div>
-            </div>
-
-            <!-- Mobile number -->
-            <div class="row">
-              <div class="input-field col l12">
-                <i class="material-icons prefix">phone</i>
-                <input id="mobile-number-id" type="text">
-                <label for="mobile-number-id">Mobile Number</label>
-              </div>
             </div>
 
             <!-- Email -->
             <div class="row">
               <div class="input-field col l12">
                 <i class="material-icons prefix">email</i>
-                <input id="email-id" type="text">
-                <label for="email-id">Email</label>
+                <input id="email-id" type="text" name="email">
+                <label for="email-id">Email<span id="email-error" class="error-color"></span></label>
+              </div>
+            </div>
+
+            <!-- Mobile number -->
+            <div class="row">
+              <div class="input-field col l12">
+                <i class="material-icons prefix">phone</i>
+                <input id="mobile-number-id" type="text" name="mobile">
+                <label for="mobile-number-id">Mobile Number<span id="mobile-error" class="error-color"></span></label>
               </div>
             </div>
 
@@ -55,37 +66,33 @@
             <div class="row">
                 <div class="input-field col l6">
                   <i class="material-icons prefix">lock</i>
-                  <input id="password-id" type="password">
-                  <label for="password-id">Password</label>
+                  <input id="password-id" type="password" name="password">
+                  <label for="password-id">Password<span id="password-error" class="error-color"></span></label>
                 </div>
 
                 <div class="input-field col l6">
-                  <input id="retype-password-id" type="password">
-                  <label for="retype-password-id">Retype Password</label>
+                  <input id="retype-password-id" type="password" name="repassword">
+                  <label for="retype-password-id">Retype Password<span id="repassword-error" class="error-color"></span></label>
                 </div>
             </div>
-
-            <!-- Checkbox -->
-            <p>
-              <input type="checkbox" class="filled-in" id="filled-in-box"/>
-              <label for="filled-in-box">I don't want to specify any payment options</label></p>
 
             <!-- Payment options -->
             <ul class="collapsible">
               <!-- Debit/Credit Card -->
               <li>
-                <div class="collapsible-header">Debit/Credit Card</div>
+                <div id="dc_card" class="collapsible-header" onclick="javascript:getPaymentMethod.call(this)"><span class="new badge" data-badge-caption="selected"></span>Debit/Credit Card</div>
                 <div class="collapsible-body">
                   <div class="row">
                     <div class="input-field col l12">
-                      <input id="card-no-id" type="text">
-                      <label for="card-no-id">Card No.</label>
+                      <input id="card-no-id" type="text" name="card_no">
+                      <label for="card-no-id">Card No.<span id="card-no-error" class="error-color"></span></label>
                     </div>
                   </div>
 
                   <div class="row">
                     <div class="input-field col l6">
-                      <select>
+                      <select name="month_list" id="month-list">
+                        <option value="" disabled selected>Select Month</option>
                         <option value="01">01</option>
                         <option value="02">02</option>
                         <option value="03">03</option>
@@ -103,7 +110,8 @@
                     </div>
 
                     <div class="input-field col l6">
-                      <select>
+                      <select name="year_list" id="year-list">
+                        <option value="" disabled selected>Select Year</option>
                         <option value="2017">2017</option>
                         <option value="2018">2018</option>
                         <option value="2019">2019</option>
@@ -145,8 +153,8 @@
 
                   <div class="row">
                     <div class="input-field col l12">
-                      <input id="cardholder-id" type="text">
-                      <label for="cardholder-id">Cardholder's Name</label>
+                      <input id="cardholder-id" type="text" name="cardholders_name">
+                      <label for="cardholder-id">Cardholder's Name<span id="cardholder-error" class="error-color"></span></label>
                     </div>
                   </div>
                 </div>
@@ -154,11 +162,13 @@
 
               <!-- Net Banking -->
               <li>
-                <div class="collapsible-header">Net Banking</div>
+                <div id="net_b" class="collapsible-header" onclick="javascript:getPaymentMethod.call(this)"><span class="new badge" data-badge-caption="selected"></span>Net Banking</div>
                 <div class="collapsible-body">
                   <div class="row">
                     <div class="input-field col l12">
-                      <select name="" id="">
+                      <span id="bank-list-error" class="error-color"></span>
+                      <select name="bank_list" id="bank-list">
+                        <option value="" disabled selected>Select Bank</option>
                         <option value="Kotak Bank">Kotak Bank</option>
                         <option value="Citibank">Citibank</option>
                         <option value="HDFC Bank">HDFC Bank</option>
@@ -181,24 +191,38 @@
 
               <!-- Mobile Wallets -->
               <li>
-                <div class="collapsible-header">Mobile Wallets</div>
+                <div id="m_wallet" class="collapsible-header" onclick="javascript:getPaymentMethod.call(this)"><span class="new badge" data-badge-caption="selected"></span>Mobile Wallets</div>
                 <div class="collapsible-body">
                   <div class="row">
                     <div class="input-field col l12">
-                      <select name="" id="">
+                      <select name="wallet_list" id="wallet-list">
+                        <option value="" disabled selected>Select Wallet</option>
                         <option value="Paytm">Paytm</option>
                         <option value="Freecharge">Freecharge</option>
                         <option value="Jio Money">Jio Money</option>
                       </select>
                     </div>
                   </div>
+
+                  <div class="row">
+                    <div class="input-field col l12">
+                      <input id="wallet-mobile" type="text" name="wallet_mobile">
+                      <label for="wallet-mobile">Wallet Mobile Number<span id="wallet-mobile-error" class="error-color"></span></label>
+                    </div>
+                  </div>
                 </div>
               </li>
             </ul>
+
+            <!-- Checkbox -->
+            <p>
+              <input type="checkbox" class="filled-in" id="filled-in-box" onclick="javascript:noPayment.call(this)"/>
+              <label for="filled-in-box">I don't want to specify any payment options<span class="error-color" id="pay_method_error"></span></label></p>
           </div>
 
           <div class="card-action">
-            <a href="" class="btn waves-effect waves-light">Sign Up</a>
+            <input type="hidden" name="pay_method" id="pay_method" value="">
+            <input type="submit" class="btn waves-effect waves-light" value="Sign Up">
           </div>
         </div>
       </form>
