@@ -1,0 +1,11 @@
+.brand-logo{
+  font-family: 'Kaushan Script', cursive;
+  color: white;
+}
+
+body{
+  background-image: linear-gradient( rgba(0, 0, 0, 0.5) , rgba(0, 0, 0, 0.5) ) , url("../images/gujarat.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}

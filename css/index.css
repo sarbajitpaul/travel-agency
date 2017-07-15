@@ -1,0 +1,12 @@
+body{
+  background-image: url(../images/lake-background.jpg);
+  background-repeat: no-repeat;
+}
+
+nav{
+  box-shadow: none;
+}
+
+.brand-logo{
+  font-family: 'Kaushan Script', cursive;
+}

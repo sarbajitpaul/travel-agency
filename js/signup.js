@@ -61,6 +61,7 @@ function validator(){
   var validMobile = /[7-9]{1}[0-9]{9}$/;
   var validCardNo = /[0-9]{16}$/;
   var status = true;
+  var payment_status = true;
 
   // First Name
   if(fname == ""){
@@ -149,20 +150,21 @@ function validator(){
     document.getElementById("repassword-error").innerHTML = "";
   }
 
+  // Payment
   if(document.getElementById("filled-in-box").checked == false){
     if(document.getElementById("pay_method").value == ""){
       document.getElementById("pay_method_error").innerHTML = " Specify a Payment Method";
-      status = false;
+      payment_status = false;
     }
     else if(document.getElementById("pay_method").value == "dc_card"){
       document.getElementById("pay_method_error").innerHTML = "";
       if(cardNo == ""){
         document.getElementById("card-no-error").innerHTML = " Blank";
-        status = false;
+        payment_status = false;
       }
       else if(!(validCardNo.test(cardNo))){
         document.getElementById("card-no-error").innerHTML = " Invalid";
-        status = false;
+        payment_status = false;
       }
       else{
         document.getElementById("card-no-error").innerHTML = "";
@@ -172,7 +174,7 @@ function validator(){
       document.getElementById("pay_method_error").innerHTML = "";
       if(bank == ""){
         document.getElementById("bank-list-error").innerHTML = " Blank";
-        status = false;
+        payment_status = false;
       }
       else{
         document.getElementById("bank-list-error").innerHTML = "";
@@ -180,5 +182,8 @@ function validator(){
     }
   }
 
-  return status;
+  if(status == false || payment_status == false)
+    return false;
+  else
+    return true;
 }
