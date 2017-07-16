@@ -51,10 +51,10 @@ function validator(){
   var cardNo = document.signup_form.card_no.value;
   var month = document.getElementById("month-list").options[document.getElementById("month-list").selectedIndex].value;
   var year = document.getElementById("year-list").options[document.getElementById("year-list").selectedIndex].value;
-  var cardholdersName = document.signup_form.value;
+  var cardholdersName = document.signup_form.cardholders_name.value;
   var bank = document.getElementById("bank-list").options[document.getElementById("bank-list").selectedIndex].value;
   var wallet = document.getElementById("wallet-list").options[document.getElementById("wallet-list").selectedIndex].value;
-  var walletMobile = document.signup_form.value;
+  var walletMobile = document.signup_form.wallet_mobile.value;
 
   var validName = /[A-Z]{1}[a-z]+[]{0}$/;
   var validEmail = /[a-zA-Z0-9.-_]+[@]{1}[a-z]+[.]{1}[a-z.]+[]{0}$/;
@@ -152,12 +152,18 @@ function validator(){
 
   // Payment
   if(document.getElementById("filled-in-box").checked == false){
+
+    // No payment method selected
     if(document.getElementById("pay_method").value == ""){
       document.getElementById("pay_method_error").innerHTML = " Specify a Payment Method";
       payment_status = false;
     }
+
+    // Debit/Credit card selected
     else if(document.getElementById("pay_method").value == "dc_card"){
       document.getElementById("pay_method_error").innerHTML = "";
+
+      // For card number
       if(cardNo == ""){
         document.getElementById("card-no-error").innerHTML = " Blank";
         payment_status = false;
@@ -169,6 +175,39 @@ function validator(){
       else{
         document.getElementById("card-no-error").innerHTML = "";
       }
+
+      // For cardholders name
+      if(cardholdersName == ""){
+        document.getElementById("cardholder-error").innerHTML = " Blank";
+        payment_status = false;
+      }
+      else{
+        for (i = 0; i < cardholdersName.length; i++)
+          if ((cardholdersName[i]>='A' && cardholdersName[i]<='Z') || (cardholdersName[i]>='a' && cardholdersName[i]<='z') || cardholdersName[i]==' ')
+            {
+              if ((i==0 || cardholdersName[i-1]==' ') && cardholdersName[i]!=cardholdersName[i].toUpperCase() )
+                {
+                  document.getElementById ("cardholder-error").innerHTML=" Initials not Capital";
+                  payment_status = false;
+                  break;
+                }
+              if (i!=0 && cardholdersName[i]>='A' && cardholdersName[i]<='Z' && cardholdersName[i-1]!=' ')
+              {
+                  document.getElementById ("cardholder-error").innerHTML=" No Spaces between Parts of Name";
+                  payment_status = false;
+                  break;
+              }
+            }
+          else
+            {
+              document.getElementById ("cardholder-error").innerHTML=" Invalid";
+              payment_status = false;
+              break;
+            }
+          if (i == cardHoldersName.length)
+            document.getElementById ("cardholder-error").innerHTML="";
+      }
+
     }
     else if(document.getElementById("pay_method").value == "net_b"){
       document.getElementById("pay_method_error").innerHTML = "";
