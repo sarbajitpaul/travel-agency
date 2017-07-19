@@ -1,6 +1,7 @@
 $(document).ready(function() {
-    $('select').material_select();
-  });
+  $('select').material_select();
+  $('.modal').modal();
+});
 
 $(function(){
   $('#filled-in-box').change(function(){
@@ -225,4 +226,9 @@ function validator(){
     return false;
   else
     return true;
+}
+
+function package(){
+  var month = document.getElementById("travellers-list").options[document.getElementById("travellers-list").selectedIndex].value;
+  alert(month);
 }

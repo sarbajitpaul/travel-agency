@@ -1,0 +1,8 @@
+.brand-logo{
+  font-family: 'Kaushan Script', cursive;
+  color: white;
+}
+
+body{
+  background: url("../images/book-background.jpeg") no-repeat fixed center;
+}

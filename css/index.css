@@ -1,6 +1,5 @@
 body{
-  background-image: url(../images/lake-background.jpg);
-  background-repeat: no-repeat;
+  background: url("../images/lake-background.jpg") no-repeat fixed center;
 }
 
 nav{
@@ -9,4 +8,14 @@ nav{
 
 .brand-logo{
   font-family: 'Kaushan Script', cursive;
+}
+
+.resize {
+    width: 60px;
+    height: auto;
+}
+
+.resize {
+    width: 60px;
+    height: auto;
 }
